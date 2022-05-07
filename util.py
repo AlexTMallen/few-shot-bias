@@ -73,8 +73,10 @@ def flatten_label_losses(label_losses, dev_data):
 def get_prompts(task, idx):
 
     if task in ["SST-2", "sst-5", "mr", "cr"]:
-        templates = ["A %s one . ", "It was %s . ",
-                     "All in all %s . ", "A %s piece . "]
+        templates = ["%s . ", "It was %s . ",
+                     "All in all %s . ", "It's %s . "]
+    elif task in ["SemEval", "male", "female"]:
+        templates = ["%s . "] * 4
     elif task in ["yelp_full", "yelp_binary", "amazon"]:
         templates = ["A %s one. ", "It was %s. ",
                      "All in all %s. ", "A %s piece. "]
@@ -96,6 +98,8 @@ def get_prompts(task, idx):
 
     if task in ["SST-2", "mr", "cr", "yelp_binary"]:
         label_words = ["terrible", "great"]
+    elif task in ["SemEval", "male", "female"]:
+        label_words = ["#peace", "#angry"]
     elif task in ["sst-5", "yelp_full", "amazon"]:
         label_words = ["terrible", "bad", "okay", "good", "great"]
     elif task in ["agnews"]:

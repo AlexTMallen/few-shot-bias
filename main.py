@@ -19,7 +19,7 @@ from model_util import load_checkpoint, set_extra_embeddings, \
 from util import get_prompts, get_paths, flatten_label_losses, \
     prepend_task_tokens, reassign_output_tokens
 
-N_LABELS_DICT = {"SST-2": 2, "sst-5": 5, "mr": 2, "cr": 2, "mpqa": 2,
+N_LABELS_DICT = {"SemEval": 2, "male": 2, "female": 2, "SST-2": 2, "sst-5": 5, "mr": 2, "cr": 2, "mpqa": 2,
                  "subj": 2, "trec": 6, "CoLA": 2,
                  "amazon": 5, "yelp_full": 5, "yelp_binary": 2,
                  "agnews": 4, "copa": 2, "boolq": 2,
@@ -60,7 +60,7 @@ def main(logger, args):
     if args.do_train or args.use_demonstrations:
         assert args.train_seed > 0
 
-    n_templates = 4
+    n_templates = 1
     k = int(args.k)
     seed = int(args.seed)
 
@@ -168,7 +168,7 @@ def run(logger, do_train, do_zeroshot, task, train_task, k, seed,
                             n_prefix=n_prefix)
 
         k = int(k)
-        eval_period = 100
+        eval_period = 400
         num_training_steps = 400
 
         cache_paths = [os.path.join(out_dir, "{}cache-{}-{}.pkl".format(
@@ -360,6 +360,7 @@ def evaluate(dev_data, label_losses):
     for idx, (_, label) in enumerate(dev_data):
         label_loss = {l:np.sum(label_losses[l][idx]) for l in label_losses}
         prediction = sorted(label_loss.items(), key=lambda x: x[1])[0][0]
+        logger.info(prediction)
         acc.append(prediction==label)
     return np.mean(acc)
 
