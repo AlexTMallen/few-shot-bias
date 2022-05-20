@@ -1,6 +1,10 @@
 original
 data
 out
+eec
+eec.zip
+.ipynb_checkpoints
+*.npy
 *.err
 *.out
 *.txt
