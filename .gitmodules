@@ -1,0 +1,6 @@
+[submodule "winogrande-winogender/bart-large"]
+	path = winogrande-winogender/pretrained/bart-large
+	url = https://huggingface.co/facebook/bart-large
+[submodule "winogrande-winogender/pretrained/bart-base"]
+	path = winogrande-winogender/pretrained/bart-base
+	url = https://huggingface.co/facebook/bart-base
