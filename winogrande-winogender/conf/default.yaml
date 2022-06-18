@@ -35,3 +35,4 @@ ftrain: '${oc.env:PWD}/data/winogrande/train_xl.jsonl'
 feval: '${oc.env:PWD}/data/winogrande/dev.jsonl'
 lm: '${oc.env:PWD}/pretrained/bart-large'
 max_context_length: 128
+eval_checkpoint: null
