@@ -35,3 +35,4 @@ ftrain: '${oc.env:PWD}/data/winogrande/train_s.jsonl'
 feval: '${oc.env:PWD}/data/winogender/eval2_120.jsonl'
 lm: 'facebook/bart-large'  # ${oc.env:PWD}/pretrained/bart-large'  #/saves/winogrande-winogender2/classifier-default/'
 max_context_length: 128
+eval_checkpoint: null
