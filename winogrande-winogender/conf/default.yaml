@@ -17,21 +17,21 @@ batch_size: 100
 collate_fn: 'ignore'  # use 'ignore' to pass an identity collate and define featurize instead
 max_steps: 100_000
 log_every_n_steps: 100
-val_check_interval: 100
-val_sample_size: 100
+val_check_interval: 20
+val_sample_size: 120
 
 
 ##########
 # naming
 ##########
 model: 'classifier'
-project: 'wrangl-winogrande'
+project: 'winogrande-winogender2'
 
 
 ###########
 # params
 ###########
-ftrain: '${oc.env:PWD}/data/winogrande/train_xl.jsonl'
-feval: '${oc.env:PWD}/data/winogrande/dev.jsonl'
-lm: '${oc.env:PWD}/pretrained/bart-large'
+ftrain: '${oc.env:PWD}/data/winogrande/train_s.jsonl'
+feval: '${oc.env:PWD}/data/winogender/eval2_120.jsonl'
+lm: 'facebook/bart-large'  # ${oc.env:PWD}/pretrained/bart-large'  #/saves/winogrande-winogender2/classifier-default/'
 max_context_length: 128
